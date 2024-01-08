@@ -1,0 +1,7 @@
+
+<ng-container *ngIf="!isAdmin">
+    <app-customer-navbar-component *ngIf="!isLoginOrSignupRoute()"></app-customer-navbar-component>
+  </ng-container>
+  <app-admin-navbar-component *ngIf="isAdmin"></app-admin-navbar-component>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,34 @@
+<div *ngIf="user" class="user-details-container">
+  <h2>User Details</h2>
+
+  <p><strong>First Name:</strong> {{ user.first_name }}</p>
+  <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+  <p><strong>Email:</strong> {{ user.email }}</p>
+
+  <div *ngIf="!isEditing" class="user-buttons">
+    <button (click)="toggleEdit()">Edit</button>
+    <button (click)="deleteUser()">Delete</button>
+  </div>
+
+  <div *ngIf="isEditing" class="edit-user-form">
+    <h3>Edit User</h3>
+    <form (submit)="updateUser()">
+      <label for="new_first_name">New First Name:</label>
+      <input type="text" id="new_first_name" [(ngModel)]="updateData.new_first_name" name="new_first_name">
+
+      <label for="new_last_name">New Last Name:</label>
+      <input type="text" id="new_last_name" [(ngModel)]="updateData.new_last_name" name="new_last_name">
+
+      <label for="new_email">New Email:</label>
+      <input type="email" id="new_email" [(ngModel)]="updateData.new_email" name="new_email">
+
+      <label for="new_password">New Password:</label>
+      <input type="password" id="new_password" [(ngModel)]="updateData.new_password" name="new_password">
+
+      <div class="edit-buttons">
+        <button type="submit">Update</button>
+        <button type="button" (click)="toggleEdit()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="customer-navbar">
+  <button routerLink="/main" class="logout-button">Home</button>
+  <button routerLink="/shoppingCart" class="user-details-button">Shopping Cart</button>
+  <div class="user-dropdown" (mouseover)="toggleDropdown()" (mouseleave)="closeDropdown()">
+    <button class="user-details-button">User</button>
+    <div class="dropdown-content" [class.show]="dropdownVisible">
+      <button (click)="logout()">Logout</button>
+      <button routerLink="/orders">Orders</button>
+      <button routerLink="/user-details">User</button>
+    </div>
+  </div>
+</div>

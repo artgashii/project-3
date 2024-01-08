@@ -1,0 +1,26 @@
+<div *ngIf="userOrders.length > 0; else noOrders" class="user-orders-container">
+  <h2>User Orders</h2>
+  <ul>
+    <li *ngFor="let order of userOrders">
+      <h3>Order ID: {{ order.order_id }}</h3>
+      <p>Total Amount: {{ order.total_amount }}</p>
+      <p>Order Date: {{ order.order_date | date:'medium' }}</p>
+      <p>Confirmation Status: {{ order.is_confirmed ? 'Confirmed' : 'Not Confirmed' }}</p>
+
+      <div *ngIf="order.order_items.length > 0">
+        <h4>Ordered Items:</h4>
+        <ul>
+          <li *ngFor="let orderItem of order.order_items">
+            <p>{{ orderItem.product.name }} (Quantity: {{ orderItem.quantity }})</p>
+          </li>
+        </ul>
+      </div>
+
+   
+    </li>
+  </ul>
+</div>
+
+<ng-template #noOrders class="no-orders-message">
+  <p>No orders available.</p>
+</ng-template>
